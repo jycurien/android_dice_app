@@ -27,9 +27,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice(diceView: ImageView) {
-        val randomNumber = (1..6).random()
-        val imgUri = "@drawable/dice$randomNumber"
+        val dice = Dice(6);
+        val diceRoll = dice.roll()
+        val imgUri = "@drawable/dice$diceRoll"
         val imageResource = resources.getIdentifier(imgUri, null, packageName)
         diceView.setImageResource(imageResource)
+    }
+}
+
+class Dice(private val numSides: Int) {
+    fun roll(): Int {
+        return (1..numSides).random()
     }
 }
